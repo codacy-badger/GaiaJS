@@ -5,9 +5,10 @@ setup_git() {
   git config --global user.name "Travis CI"
 }
 
-commit_docs_files() {
-  git add docs
-  git commit --message "Travis build: $TRAVIS_BUILD_NUMBER"
+commit_files() {
+  git add .
+  git commit -m "Travis build: $TRAVIS_BUILD_NUMBER" -m "[skip ci]"
+
 }
 
 upload_files() {

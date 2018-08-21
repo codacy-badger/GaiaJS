@@ -4,4 +4,4 @@ script:
   - yarn lint
   - yarn build
 after_success:
-  - .travis/push.sh
+  - sh .travis/push.sh
