@@ -3,8 +3,6 @@ node_js: node
 script:
   - yarn lint
   - yarn build
-after_success:
-  - sh .travis/push.sh
 deploy:
  provider: pages
  skip_cleanup: true
