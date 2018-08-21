@@ -7,6 +7,7 @@
     "stompjs": "^2.3.3"
   },
   "devDependencies": {
+    "@types/stompjs": "^2.3.3",
     "autoprefixer": "^9.1.2",
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.5",
