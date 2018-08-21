@@ -36,7 +36,6 @@
     "webpack-dev-server": "^3.1.5"
   },
   "scripts": {
-    "docz:dev": "docz dev",
     "dev": "docz dev && webpack-dev-server --open --mode=development",
     "build": "webpack --mode=production && docz build",
     "lint": "stylelint src/**/*.scss && tslint src/**/*.ts && eslint *.js"
