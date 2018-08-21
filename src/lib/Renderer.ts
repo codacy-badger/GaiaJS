@@ -1,50 +1,50 @@
-import {Block} from './components/markup/Block'
-import {Bold} from './components/markup/Bold'
-import {Button} from './components/markup/Button'
-import {Headline} from './components/markup/Headline'
-import {Image} from './components/markup/Image'
-import {Item} from './components/markup/Item'
-import {Items} from './components/markup/Items'
-import {Link} from './components/markup/Link'
-import {Text} from './components/markup/Text'
-import {Table} from './components/markup/Table'
-import {MarkupComponent} from './components/markup/MarkupComponent'
-import {Row} from './components/markup/Row'
-import {Col} from './components/markup/Col'
-import {Checkbox} from './components/markup/Checkbox'
+import {Block} from "./components/markup/Block";
+import {Bold} from "./components/markup/Bold";
+import {Button} from "./components/markup/Button";
+import {Checkbox} from "./components/markup/Checkbox";
+import {Col} from "./components/markup/Col";
+import {Headline} from "./components/markup/Headline";
+import {Image} from "./components/markup/Image";
+import {Item} from "./components/markup/Item";
+import {Items} from "./components/markup/Items";
+import {Link} from "./components/markup/Link";
+import {MarkupComponent} from "./components/markup/MarkupComponent";
+import {Row} from "./components/markup/Row";
+import {Table} from "./components/markup/Table";
+import {Text} from "./components/markup/Text";
 
 export class Renderer {
 
-    components:MarkupComponent[] = [
+    public components: MarkupComponent[] = [
         Block, Bold, Button, Headline,
         Image, Item, Items, Link, Text,
-        Table, Row, Col, Checkbox
-    ]
-    container: any;
+        Table, Row, Col, Checkbox,
+    ];
+    public container: any;
 
     constructor(container: any) {
         this.container = container;
     }
 
-    render(message: any, sendMessage: any) {
-        let element = this.getElement(message);
+    public render(message: any, sendMessage: any) {
+        const element = this.getElement(message);
         return Array.isArray(element) ?
-            element.map(e => this.renderElement(e, sendMessage)) :
+            element.map((e) => this.renderElement(e, sendMessage)) :
             this.renderElement(element, sendMessage);
     }
 
-    renderElement(element: any, sendMessage: any) {
+    public renderElement(element: any, sendMessage: any) {
         if (this.container) {
             element.render(this.container, sendMessage);
-            let div = document.createElement("div");
-            div.setAttribute("style", 'clear:both');
+            const div = document.createElement("div");
+            div.setAttribute("style", "clear:both");
             this.container.appendChild(div);
         }
     }
 
-    getElement(message:any){
-        //FIXME
-        let component: MarkupComponent = Object.create(this.components[message.type.toUpperCase()]);
+    public getElement(message: any) {
+        // FIXME
+        const component: MarkupComponent = Object.create(this.components[message.type.toUpperCase()]);
         component.constructor.apply(component, message);
         return component;
 /*

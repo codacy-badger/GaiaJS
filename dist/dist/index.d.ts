@@ -1,3 +1,3 @@
-import './scss/styles.scss';
-import { Gaia as defaultExport } from './lib/gaia';
+import { Gaia as defaultExport } from "./lib/gaia";
+import "./scss/styles.scss";
 export default defaultExport;

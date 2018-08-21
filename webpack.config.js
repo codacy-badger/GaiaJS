@@ -5,11 +5,9 @@ const HTMLWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
-const TSLintPlugin = require('tslint-webpack-plugin');
 // required for variables defined in js and then used in sass
 const sass = require('node-sass');
 const sassUtils = require('node-sass-utils')(sass);
-
 const sassVars = require('./src/theme.js');
 // used to check whether to extract css
 const devMode = process.env.NODE_ENV !== 'production';
@@ -18,6 +16,18 @@ module.exports = {
   entry: './src/index.ts',
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        enforce: 'pre',
+        use: [
+          {
+            loader: 'tslint-loader',
+            options: {
+              fix: true,
+            },
+          },
+        ],
+      },
       {
         test: /\.js$/,
         exclude: /node_modules/,
@@ -67,9 +77,6 @@ module.exports = {
   plugins: [
     new StyleLintPlugin({
       files: ['src/**/*.scss'],
-    }),
-    new TSLintPlugin({
-      files: ['src/**/*.ts'],
     }),
     new UglifyJsPlugin(),
     new MiniCssExtractPlugin({

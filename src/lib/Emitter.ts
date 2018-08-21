@@ -1,42 +1,39 @@
 
 export class Emitter {
-    constructor() {
 
+    // noinspection JSMethodCanBeStatic
+    public onConnecting(url: any, identity: any) {
+        return `connecting to url ${url} for identity ${identity}`;
     }
 
     // noinspection JSMethodCanBeStatic
-    onConnecting(url: any, identity:any) {
-        console.log(`connecting to url ${url} for identity ${identity}`);
-    };
+    public onConnected(url: any, identity: any) {
+        return `connected to url ${url} for identity ${identity}`;
+    }
 
     // noinspection JSMethodCanBeStatic
-    onConnected(url: any, identity:any) {
-        console.log(`connected to url ${url} for identity ${identity}`);
-    };
+    public onDisconnecting(url: any, identity: any) {
+        return `disconnecting from url ${url} for identity ${identity}`;
+    }
 
     // noinspection JSMethodCanBeStatic
-    onDisconnecting(url: any, identity:any) {
-        console.log(`disconnecting from url ${url} for identity ${identity}`);
-    };
+    public onDisconnected(url: any, identity: any) {
+        return `disconnected from url ${url} for identity ${identity}`;
+    }
 
     // noinspection JSMethodCanBeStatic
-    onDisconnected(url: any, identity:any) {
-        console.log(`disconnected from url ${url} for identity ${identity}`);
-    };
+    public onReconnecting(url: any, identity: any) {
+        return `reconnecting to url ${url} for identity ${identity}`;
+    }
 
     // noinspection JSMethodCanBeStatic
-    onReconnecting(url: any, identity: any) {
-        console.log(`reconnecting to url ${url} for identity ${identity}`);
-    };
+    public onError(error: string) {
+        return error;
+    }
 
     // noinspection JSMethodCanBeStatic
-    onError(error: string) {
-        console.error(error);
-    };
-
-    // noinspection JSMethodCanBeStatic
-    onMessage(data:any) {
-        console.log(data);
-    };
+    public onMessage(data: any) {
+        return data;
+    }
 
 }
