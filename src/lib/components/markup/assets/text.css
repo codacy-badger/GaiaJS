@@ -1,0 +1,18 @@
+.gaia-chat .text {
+    max-width: 75%;
+    border-radius: 5px;
+    padding-left: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    display: inline-block;
+    animation: slide-up 0.4s ease;
+}
+.gaia-chat .text.left {
+    background: rgb(47, 64, 80);
+}
+.gaia-chat .text.right {
+    background: white;
+    border: 1px solid lightgray;
+}

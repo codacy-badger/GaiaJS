@@ -1,0 +1,17 @@
+.gaia-chat .text-icon {
+    display: inline-block;
+    width: 42px;
+    height: 40px;
+    background: black;
+    background: url(icon.png) center center no-repeat;
+    background-size: cover;
+    animation: slide-up 0.4s ease;
+}
+.gaia-chat .text-icon.left {
+    margin-right: 10px;
+    margin-left: 20px;
+}
+.gaia-chat .text-icon.right {
+    margin-left: 10px;
+    margin-right: 20px;
+}
