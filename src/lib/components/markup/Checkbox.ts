@@ -24,9 +24,4 @@ export class Checkbox {
             checkbox.appendChild(new InlineText(this.text).render());
             container.appendChild(checkbox);
     }
-
-    isNested(container:any) {
-        return container.hasClass("block") || container.prop("tagName") === "TD";
-    }
-
 }
