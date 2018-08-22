@@ -1,4 +1,4 @@
-import "./assets/text_icon.css";
+import "./assets/icon.css";
 
 export class Icon {
 
@@ -9,8 +9,8 @@ export class Icon {
     }
 
     public render() {
-        const textIcon = document.createElement("div");
-        textIcon.classList.add("text-icon", this.position);
-        return textIcon;
+        const icon = document.createElement("div");
+        icon.classList.add("icon", this.position);
+        return icon;
     }
 }
