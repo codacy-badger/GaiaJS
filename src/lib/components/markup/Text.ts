@@ -18,7 +18,6 @@ export class Text extends MarkupComponent{
     render(container:any) {
         if (!Text.isNested(container)) {
             let positionClass = this.position || "left";
-
             let text = document.createElement("div");
             text.classList.add("text", positionClass);
             text.appendChild(TextTime.render());
@@ -28,9 +27,5 @@ export class Text extends MarkupComponent{
         } else {
             container.appendChild(new InlineText(this.text).render());
         }
-    }
-
-    static isNested(container: any) {
-        return container.hasClass("block") || container.prop("tagName") === "TD";
     }
 }

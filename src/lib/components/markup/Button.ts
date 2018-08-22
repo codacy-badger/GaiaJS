@@ -39,8 +39,4 @@ export class Button extends MarkupComponent{
             sendMessage({type: "button", text: t, name: n, value: v});
         });
     }
-
-    static isNested(container:any) {
-        return container.hasClass("block") || container.prop("tagName") === "TD";
-    }
 }

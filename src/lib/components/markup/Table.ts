@@ -16,10 +16,9 @@ export class Table extends MarkupComponent {
     render(container:any, sendMessage:any) {
         let table = document.createElement("table");
         if (!Table.isNested(container)) {
-            let position = this.message.position || "left"
+            let position = this.message.position || "left";
             table.classList.add("table", position);
             table.appendChild(TextTime.render());
-
             let renderer = new Renderer(table);
             Array.from(this.message.elements)
                 .map(e => Object.assign(e, {position: this.message.position}))
@@ -33,9 +32,5 @@ export class Table extends MarkupComponent {
                 .forEach(e => renderer.render(e, sendMessage));
         }
         container.appendChild(table);
-    }
-
-    static isNested(container:any) {
-        return container.hasClass("gaia-block") || container.prop("tagName") === "TD";
     }
 }

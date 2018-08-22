@@ -6,4 +6,7 @@ export class MarkupComponent {
         this.name = name;
     }
 
+    static isNested(container:any) {
+        return container.hasClass("block") || container.prop("tagName") === "TD";
+    }
 }
