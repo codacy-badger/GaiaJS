@@ -1,5 +1,5 @@
-import {TextIcon} from "../TextIcon";
-import {TextTime} from "../TextTime";
+import {Icon} from "../Icon";
+import {Timestamp} from "../Timestamp";
 import {MarkupComponent} from "./MarkupComponent";
 
 import "./assets/block.css";
@@ -23,9 +23,9 @@ export class Block extends MarkupComponent {
         const block = document.createElement("div");
         block.classList.add("block");
         block.classList.add(position);
-        block.appendChild(TextTime.render());
+        block.appendChild(Timestamp.render());
         Block.renderElements(block, this.message, sendMessage);
-        container.appendChild(new TextIcon(position).render());
+        container.appendChild(new Icon(position).render());
         container.appendChild(block);
     }
 

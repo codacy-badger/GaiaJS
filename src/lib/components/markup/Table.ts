@@ -1,5 +1,5 @@
-import {TextIcon} from "../TextIcon";
-import {TextTime} from "../TextTime";
+import {Icon} from "../Icon";
+import {Timestamp} from "../Timestamp";
 import {MarkupComponent} from "./MarkupComponent";
 
 export class Table extends MarkupComponent {
@@ -19,9 +19,9 @@ export class Table extends MarkupComponent {
         if (!Table.isNested(container)) {
             const position = this.position || "left";
             table.classList.add("table", position);
-            table.appendChild(TextTime.render());
+            table.appendChild(Timestamp.render());
             Table.renderElements(table, this.message, sendMessage);
-            container.appendChild(new TextIcon(position).render());
+            container.appendChild(new Icon(position).render());
         } else {
             table.classList.add("table-nested");
             Table.renderElements(table, this.message, sendMessage);

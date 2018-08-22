@@ -1,6 +1,6 @@
 import {InlineText} from "../InlineText";
-import {TextIcon} from "../TextIcon";
-import {TextTime} from "../TextTime";
+import {Icon} from "../Icon";
+import {Timestamp} from "../Timestamp";
 import {MarkupComponent} from "./MarkupComponent";
 
 export class Text extends MarkupComponent {
@@ -20,9 +20,9 @@ export class Text extends MarkupComponent {
             const position = this.position || "left";
             const text = document.createElement("div");
             text.classList.add("text", position);
-            text.appendChild(TextTime.render());
+            text.appendChild(Timestamp.render());
             text.appendChild(new InlineText(this.text).render());
-            container.appendChild(new TextIcon(position).render());
+            container.appendChild(new Icon(position).render());
             container.appendChild(text);
         } else {
             container.appendChild(new InlineText(this.text).render());

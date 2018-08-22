@@ -1,6 +1,6 @@
 import "./assets/text_time.css";
 
-export class TextTime {
+export class Timestamp {
 
     public static render() {
         const date = new Date();
