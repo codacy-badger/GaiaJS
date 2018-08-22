@@ -7,12 +7,13 @@ setup_git() {
 
 commit_build_files() {
   git checkout master
-  git add dist
+  git add -f dist
   git commit --message "Travis build: $TRAVIS_BUILD_NUMBER [skip ci]"
 }
 
 upload_files() {
-  git remote add origin https://${GITHUB_TOKEN}@github.com/MiniXC/GaiaJS.git > /dev/null 2>&1
+  git remote rm origin
+  git remote add origin https://MiniXC:${GITHUB_TOKEN}@github.com/MiniXC/GaiaJS.git > /dev/null 2>&1
   git push --quiet --set-upstream origin master
 }
 
