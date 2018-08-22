@@ -1,5 +1,4 @@
 import {MarkupComponent} from './MarkupComponent'
-import {Renderer} from '../../Renderer'
 
 import './assets/row.css'
 
@@ -16,10 +15,7 @@ export class Row extends MarkupComponent{
     render(container:any, sendMessage:any) {
         let row = document.createElement("tr");
         row.classList.add("row");
-        let renderer = new Renderer(row);
-        Array.from(this.message.elements)
-            .map(e => Object.assign(e, {position: this.message.position}))
-            .forEach(e => renderer.render(e, sendMessage));
+        this.renderElements(row, this.message, sendMessage);
         container.appendChild(row);
     }
 
