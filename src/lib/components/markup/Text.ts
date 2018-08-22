@@ -5,10 +5,6 @@ import {MarkupComponent} from "./MarkupComponent";
 
 export class Text extends MarkupComponent {
 
-    public static isNested(container: any) {
-        return container.hasClass("block") || container.prop("tagName") === "TD";
-    }
-
     public name: string = "TEXT";
     public text: string;
     public position: string;
