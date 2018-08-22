@@ -1,6 +1,6 @@
 import "./assets/text_icon.css";
 
-export class TextIcon {
+export class Icon {
 
     public position: string;
 

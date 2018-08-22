@@ -7,10 +7,6 @@ import "./assets/right.css";
 
 export class Button extends MarkupComponent {
 
-    public static isNested(container: any) {
-        return container.hasClass("block") || container.prop("tagName") === "TD";
-    }
-
     public name: string = "BUTTON";
     public text: string;
     public buttonName: string;

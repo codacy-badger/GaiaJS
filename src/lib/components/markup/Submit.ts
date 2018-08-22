@@ -44,7 +44,7 @@ export class Submit extends MarkupComponent {
         const text = this.text;
         const timestamp = this.timestamp;
 
-        submit.addEventListener("click", (ev) => function() {
+        submit.addEventListener("click", (ev) => {
             const attributes = {};
 
             const content = Submit.closestByClass(ev, "message-content");
