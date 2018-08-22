@@ -1,16 +1,14 @@
-const path = require('path');
 const webpack = require('webpack');
 // plugins
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const cssnano = require('cssnano');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 // required for variables defined in js and then used in sass
 const sass = require('node-sass');
 const sassUtils = require('node-sass-utils')(sass);
 const sassVars = require('./src/theme.js');
-// used to check whether to extract css
-const devMode = process.env.WEBPACK_MODE !== 'production';
 
 module.exports = (env, argv) => ({
   entry: './src/index.ts',
@@ -72,7 +70,7 @@ module.exports = (env, argv) => ({
     libraryTarget: 'umd',
     libraryExport: 'default',
     filename: 'dist/gaia.min.js',
-    path: __dirname
+    path: __dirname,
   },
   plugins: [
     new StyleLintPlugin({
@@ -84,7 +82,7 @@ module.exports = (env, argv) => ({
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.min\.css$/g,
-      cssProcessor: require('cssnano'),
+      cssProcessor: cssnano,
       cssProcessorOptions: { discardComments: { removeAll: true } },
       canPrint: true,
     }),

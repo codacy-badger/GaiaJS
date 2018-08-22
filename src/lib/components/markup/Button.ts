@@ -25,9 +25,9 @@ export class Button extends MarkupComponent {
         this.position = message.position;
     }
 
-    render(container:any, sendMessage:any) {
-        let position = this.position || "left";
-        let button = document.createElement("button");
+    public render(container: any, sendMessage: any) {
+        const position = this.position || "left";
+        const button = document.createElement("button");
         button.setAttribute("name", this.buttonName);
 
         if (!Button.isNested(container)) {

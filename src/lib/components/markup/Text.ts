@@ -21,8 +21,8 @@ export class Text extends MarkupComponent {
 
     public render(container: any) {
         if (!Text.isNested(container)) {
-            let position = this.position || "left";
-            let text = document.createElement("div");
+            const position = this.position || "left";
+            const text = document.createElement("div");
             text.classList.add("text", position);
             text.appendChild(TextTime.render());
             text.appendChild(new InlineText(this.text).render());

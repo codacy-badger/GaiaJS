@@ -1,4 +1,4 @@
-import {MarkupComponent} from './MarkupComponent'
+import {MarkupComponent} from "./MarkupComponent";
 
 import "./assets/row.css";
 

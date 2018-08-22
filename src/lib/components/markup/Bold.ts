@@ -4,8 +4,8 @@ import {MarkupComponent} from "./MarkupComponent";
 
 export class Bold extends MarkupComponent {
 
-    name:string = "BOLD";
-    text: string;
+    public name: string = "BOLD";
+    public text: string;
 
     constructor(message: any) {
         super(name);
