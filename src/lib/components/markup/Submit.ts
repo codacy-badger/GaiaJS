@@ -8,7 +8,7 @@ import "./assets/submit.css";
 export class Submit extends MarkupComponent {
 
     public static closestByClass(el: any, clazz: string) {
-        while (el.className != clazz) {
+        while (el.className !== clazz) {
             el = el.parentNode;
             if (!el) {
                 return null;

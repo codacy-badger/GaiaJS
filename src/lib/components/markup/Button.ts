@@ -34,7 +34,9 @@ export class Button extends MarkupComponent {
 
         button.appendChild(new InlineText(this.text).render());
         container.appendChild(button);
-        const t = this.text, n = this.buttonName, v = this.value;
+        const t = this.text
+        const n = this.buttonName
+        const v = this.value;
         button.addEventListener("click", function() {
             sendMessage({type: "button", text: t, name: n, value: v});
         });

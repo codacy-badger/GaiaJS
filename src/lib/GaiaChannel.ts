@@ -55,7 +55,7 @@ export class GaiaChannel {
      * @returns Promise
      */
     public disconnect() {
-        if (this.websocket !== undefined) {
+        if (this.websocket) {
             return new Promise((resolve) => {
                 this.websocket.disconnect(() => {
                     const url = localStorage.getItem("gaia.url");
