@@ -1,4 +1,4 @@
-import Stomp from "stompjs";
+import webstomp from "webstomp-client";
 import {Emitter} from "./Emitter";
 import {Renderer} from "./Renderer";
 
@@ -35,9 +35,9 @@ export class GaiaChannel {
 
             return new Promise((resolve, reject) => {
                 this.emitter.onConnecting(url, identity);
-                this.websocket = Stomp.over(this.sockJS(url));
+                this.websocket = webstomp.over(this.sockJS(url));
 
-                this.websocket.debug = () => void 0; // disables stomp logging
+                this.websocket.debug = () => void 0; // disables webstomp logging
                 const headers = {};
                 headers["gaia.uid"] = localStorage.getItem("gaia.uid");
                 headers["gaia.sig"] = localStorage.getItem("gaia.sig");
