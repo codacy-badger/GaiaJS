@@ -5,19 +5,23 @@ import "./assets/headline.css";
 
 export class Headline extends MarkupComponent {
 
-    public name: string = "HEADLINE";
-    public message: any;
+    name:string = "HEADLINE";
+    message: any;
+    text: string;
+    position: string;
 
     constructor(message: any) {
         super(name);
         this.message = message;
+        this.text = message.text;
+        this.position = message.position;
     }
 
-    public render(container: any) {
-        const position = this.message.position || "left";
-        const headline = document.createElement("h2");
+    render(container:any) {
+        let position = this.position || "left";
+        let headline = document.createElement("h2");
         headline.classList.add("headline", position);
-        headline.appendChild(new InlineText(this.message.text).render());
+        headline.appendChild(new InlineText(this.text).render());
         container.appendChild(headline);
     }
 

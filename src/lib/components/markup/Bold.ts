@@ -4,8 +4,8 @@ import {MarkupComponent} from "./MarkupComponent";
 
 export class Bold extends MarkupComponent {
 
-    public name: string = "BOLD";
-    public text: string;
+    name:string = "BOLD";
+    text: string;
 
     constructor(message: any) {
         super(name);
@@ -16,7 +16,6 @@ export class Bold extends MarkupComponent {
         const bold = document.createElement("b");
         bold.classList.add("bold");
         bold.appendChild(new InlineText(this.text).render());
-
         container.appendChild(bold);
     }
 

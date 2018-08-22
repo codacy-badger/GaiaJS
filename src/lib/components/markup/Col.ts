@@ -1,5 +1,4 @@
-import {Renderer} from "../../Renderer";
-import {MarkupComponent} from "./MarkupComponent";
+import {MarkupComponent} from './MarkupComponent'
 
 import "./assets/col.css";
 
@@ -16,10 +15,7 @@ export class Col extends MarkupComponent {
     public render(container: any, sendMessage: any) {
         const col = document.createElement("td");
         col.classList.add("col");
-        const renderer = new Renderer(col);
-        Array.from(this.message.elements)
-                .map((e) => Object.assign(e, {position: this.message.position}))
-                .forEach((e) => renderer.render(e, sendMessage));
+        Col.renderElements(col, this.message, sendMessage);
         container.appendChild(col);
     }
 }

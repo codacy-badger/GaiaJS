@@ -21,13 +21,12 @@ export class Text extends MarkupComponent {
 
     public render(container: any) {
         if (!Text.isNested(container)) {
-            const positionClass = this.position || "left";
-
-            const text = document.createElement("div");
-            text.classList.add("text", positionClass);
+            let position = this.position || "left";
+            let text = document.createElement("div");
+            text.classList.add("text", position);
             text.appendChild(TextTime.render());
             text.appendChild(new InlineText(this.text).render());
-            container.appendChild(new TextIcon(positionClass).render());
+            container.appendChild(new TextIcon(position).render());
             container.appendChild(text);
         } else {
             container.appendChild(new InlineText(this.text).render());
