@@ -1,5 +1,5 @@
-import {InlineText} from "../InlineText";
 import {Icon} from "../Icon";
+import {InlineText} from "../InlineText";
 import {Timestamp} from "../Timestamp";
 import {MarkupComponent} from "./MarkupComponent";
 

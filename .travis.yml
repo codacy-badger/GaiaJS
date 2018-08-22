@@ -6,9 +6,6 @@ script:
 branches:
   only:
   - master
-cache:
-  directories:
-    - node_modules
 after_success:
   - sh .travis/push.sh
 deploy:
