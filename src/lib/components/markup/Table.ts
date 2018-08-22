@@ -4,18 +4,20 @@ import {MarkupComponent} from './MarkupComponent';
 
 export class Table extends MarkupComponent {
 
-    message:any;
     name:string = "TABLE";
+    message:any;
+    position: string;
 
     constructor(message:any) {
         super(name);
         this.message = message;
+        this.position = message.position;
     }
 
     render(container:any, sendMessage:any) {
         let table = document.createElement("table");
         if (!Table.isNested(container)) {
-            let position = this.message.position || "left";
+            let position = this.position || "left";
             table.classList.add("table", position);
             table.appendChild(TextTime.render());
             Table.renderElements(table, this.message, sendMessage);

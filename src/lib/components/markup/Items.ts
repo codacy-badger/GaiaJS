@@ -5,12 +5,10 @@ import './assets/items.css'
 export class Items extends MarkupComponent{
 
     name:string = "ITEMS";
-    position: string;
     elements: any;
 
     constructor(message:any) {
         super(name);
-        this.position = message.position;
         this.elements = message.elements;
     }
 

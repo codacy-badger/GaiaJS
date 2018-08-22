@@ -22,14 +22,14 @@ export class Button extends MarkupComponent{
     }
 
     render(container:any, sendMessage:any) {
-        let positionClass = this.position || "left";
-        let button = document.createElement("button")
+        let position = this.position || "left";
+        let button = document.createElement("button");
         button.setAttribute("name", this.buttonName);
 
         if (!Button.isNested(container)) {
-            button.classList.add("button", positionClass);
+            button.classList.add("button", position);
         } else {
-            button.classList.add("button-nested", positionClass);
+            button.classList.add("button-nested", position);
         }
 
         button.appendChild(new InlineText(this.text).render());

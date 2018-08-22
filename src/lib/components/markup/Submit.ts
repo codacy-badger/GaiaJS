@@ -10,25 +10,23 @@ export class Submit extends MarkupComponent{
     name:string = "SUBMIT";
     text:string;
     position:string;
-    message: any;
     timestamp: any;
 
     constructor(message:any) {
         super(name);
-        this.message = message;
         this.text = message.text;
         this.position = message.position;
         this.timestamp = message.timestamp;
     }
 
     render(container:any, sendMessage:any) {
-        let positionClass = this.position || "left";
+        let position = this.position || "left";
         let submit = document.createElement("button");
 
         if (!Submit.isNested(container)) {
-            submit.classList.add("submit", positionClass);
+            submit.classList.add("submit", position);
         } else {
-            submit.classList.add("submit-nested", positionClass);
+            submit.classList.add("submit-nested", position);
         }
 
         submit.appendChild(new InlineText(this.text).render());
