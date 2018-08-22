@@ -1,25 +1,29 @@
-import{InlineText} from '../InlineText'
-import{TextTime} from '../TextTime'
-import{TextIcon} from '../TextIcon'
-import {MarkupComponent} from './MarkupComponent'
+import {InlineText} from "../InlineText";
+import {TextIcon} from "../TextIcon";
+import {TextTime} from "../TextTime";
+import {MarkupComponent} from "./MarkupComponent";
 
-export class Text extends MarkupComponent{
+export class Text extends MarkupComponent {
 
-    name:string = "TEXT";
-    text: string;
-    position: string;
+    public static isNested(container: any) {
+        return container.hasClass("block") || container.prop("tagName") === "TD";
+    }
 
-    constructor(message:any) {
+    public name: string = "TEXT";
+    public text: string;
+    public position: string;
+
+    constructor(message: any) {
         super(name);
         this.text = message.text;
         this.position = message.position;
     }
 
-    render(container:any) {
+    public render(container: any) {
         if (!Text.isNested(container)) {
-            let positionClass = this.position || "left";
+            const positionClass = this.position || "left";
 
-            let text = document.createElement("div");
+            const text = document.createElement("div");
             text.classList.add("text", positionClass);
             text.appendChild(TextTime.render());
             text.appendChild(new InlineText(this.text).render());
@@ -28,9 +32,5 @@ export class Text extends MarkupComponent{
         } else {
             container.appendChild(new InlineText(this.text).render());
         }
-    }
-
-    static isNested(container: any) {
-        return container.hasClass("block") || container.prop("tagName") === "TD";
     }
 }

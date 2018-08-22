@@ -1,16 +1,16 @@
-import {MarkupComponent} from './MarkupComponent'
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/image.css'
+import "./assets/image.css";
 
-export class Image extends MarkupComponent{
+export class Image extends MarkupComponent {
 
-    name:string = "IMAGE";
-    source:string;
-    text:string;
-    width:any;
-    height:any;
+    public name: string = "IMAGE";
+    public source: string;
+    public text: string;
+    public width: any;
+    public height: any;
 
-    constructor(message:any) {
+    constructor(message: any) {
         super(name);
         this.source = message.source;
         this.text = message.text;
@@ -18,8 +18,8 @@ export class Image extends MarkupComponent{
         this.height = message.height || "auto";
     }
 
-    render(container:any) {
-        let image = document.createElement("img");
+    public render(container: any) {
+        const image = document.createElement("img");
         image.setAttribute("src", this.source);
         image.setAttribute("alt", this.text);
         image.setAttribute("width", this.width);

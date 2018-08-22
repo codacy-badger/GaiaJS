@@ -1,25 +1,25 @@
-import {MarkupComponent} from './MarkupComponent'
-import {Renderer} from '../../Renderer'
+import {Renderer} from "../../Renderer";
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/row.css'
+import "./assets/row.css";
 
-export class Row extends MarkupComponent{
+export class Row extends MarkupComponent {
 
-    name:string = "ROW";
-    message:any;
+    public name: string = "ROW";
+    public message: any;
 
-    constructor(message:any) {
+    constructor(message: any) {
         super(name);
         this.message = message;
     }
 
-    render(container:any, sendMessage:any) {
-        let row = document.createElement("tr");
+    public render(container: any, sendMessage: any) {
+        const row = document.createElement("tr");
         row.classList.add("row");
-        let renderer = new Renderer(row);
+        const renderer = new Renderer(row);
         Array.from(this.message.elements)
-            .map(e => Object.assign(e, {position: this.message.position}))
-            .forEach(e => renderer.render(e, sendMessage));
+            .map((e) => Object.assign(e, {position: this.message.position}))
+            .forEach((e) => renderer.render(e, sendMessage));
         container.appendChild(row);
     }
 

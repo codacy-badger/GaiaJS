@@ -3,6 +3,14 @@ node_js: node
 script:
   - yarn lint
   - yarn build
+branches:
+  only:
+  - master
+cache:
+  directories:
+    - node_modules
+after_success:
+  - .travis/push.sh
 deploy:
  provider: pages
  skip_cleanup: true

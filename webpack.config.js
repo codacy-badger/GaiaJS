@@ -1,18 +1,18 @@
 const path = require('path');
 const webpack = require('webpack');
 // plugins
-const HTMLWebpackPlugin = require('html-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 // required for variables defined in js and then used in sass
 const sass = require('node-sass');
 const sassUtils = require('node-sass-utils')(sass);
 const sassVars = require('./src/theme.js');
 // used to check whether to extract css
-const devMode = process.env.NODE_ENV !== 'production';
+const devMode = process.env.WEBPACK_MODE !== 'production';
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './src/index.ts',
   module: {
     rules: [
@@ -39,10 +39,10 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.scss$/,
+        test: /\.(css|scss)$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
-          'css-loader',
+          argv.mode === 'production' ? MiniCssExtractPlugin.loader : 'style-loader',
+          { loader: 'css-loader', options: { minimize: true } },
           'postcss-loader',
           {
             loader: 'sass-loader',
@@ -71,8 +71,8 @@ module.exports = {
     library: 'gaia',
     libraryTarget: 'umd',
     libraryExport: 'default',
-    filename: 'gaia.js',
-    path: path.resolve(__dirname, 'dist'),
+    filename: 'dist/gaia.min.js',
+    path: __dirname
   },
   plugins: [
     new StyleLintPlugin({
@@ -80,11 +80,21 @@ module.exports = {
     }),
     new UglifyJsPlugin(),
     new MiniCssExtractPlugin({
-      filename: 'gaia.css',
+      filename: 'dist/gaia.min.css',
     }),
-    new HTMLWebpackPlugin({
-      template: path.resolve(__dirname, 'index.html'),
+    new OptimizeCssAssetsPlugin({
+      assetNameRegExp: /\.min\.css$/g,
+      cssProcessor: require('cssnano'),
+      cssProcessorOptions: { discardComments: { removeAll: true } },
+      canPrint: true,
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
-};
+  target: 'node',
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty',
+  },
+});

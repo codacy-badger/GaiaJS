@@ -1,15 +1,15 @@
-import './assets/inline_text.css'
+import "./assets/inline_text.css";
 
 export class InlineText {
 
-    text: string;
+    public text: string;
 
-    constructor(text:string){
-        this.text=text;
+    constructor(text: string) {
+        this.text = text;
     }
 
-    render() {
-        let inlineText = document.createElement("div");
+    public render() {
+        const inlineText = document.createElement("div");
         inlineText.classList.add("inline-text");
         inlineText.appendChild(document.createTextNode(this.text));
         return inlineText;

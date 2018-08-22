@@ -1,19 +1,19 @@
-import {InlineText} from '../InlineText'
-import {MarkupComponent} from './MarkupComponent'
-import './assets/bold.css'
+import {InlineText} from "../InlineText";
+import "./assets/bold.css";
+import {MarkupComponent} from "./MarkupComponent";
 
-export class Bold extends MarkupComponent{
+export class Bold extends MarkupComponent {
 
-    name:string = "BOLD";
-    text: string
+    public name: string = "BOLD";
+    public text: string;
 
-    constructor(message:any) {
+    constructor(message: any) {
         super(name);
         this.text = message.text;
     }
 
-    render(container:any) {
-        let bold = document.createElement("b");
+    public render(container: any) {
+        const bold = document.createElement("b");
         bold.classList.add("bold");
         bold.appendChild(new InlineText(this.text).render());
 

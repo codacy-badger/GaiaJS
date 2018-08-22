@@ -1,22 +1,22 @@
-import {InlineText} from '../InlineText'
-import {MarkupComponent} from './MarkupComponent'
+import {InlineText} from "../InlineText";
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/link.css'
+import "./assets/link.css";
 
-export class Link extends MarkupComponent{
+export class Link extends MarkupComponent {
 
-    name:string = "LINK";
-    text: string;
-    value: string;
+    public name: string = "LINK";
+    public text: string;
+    public value: string;
 
-    constructor(message:any) {
+    constructor(message: any) {
         super(name);
         this.text = message.text;
         this.value = message.value;
     }
 
-    render(container:any) {
-        let link = document.createElement("a");
+    public render(container: any) {
+        const link = document.createElement("a");
         link.setAttribute("href", this.value);
         link.classList.add("link");
         link.appendChild(new InlineText(this.text).render());
