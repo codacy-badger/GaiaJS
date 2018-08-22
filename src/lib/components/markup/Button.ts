@@ -31,12 +31,11 @@ export class Button extends MarkupComponent {
         } else {
             button.classList.add("button-nested", position);
         }
-
         button.appendChild(new InlineText(this.text).render());
         container.appendChild(button);
-        const t = this.text, n = this.buttonName, v = this.value;
-        button.addEventListener("click", function() {
-            sendMessage({type: "button", text: t, name: n, value: v});
+        const object = this;
+        button.addEventListener("click", () => {
+            sendMessage({type: "button", text: object.text, name: object.name, value: object.value});
         });
     }
 }
