@@ -12,7 +12,7 @@ export class MarkupComponent {
         return container.hasClass("block") || container.prop("tagName") === "TD";
     }
 
-    renderElements(component:any, message:any, sendMessage:any) {
+    static renderElements(component:any, message:any, sendMessage:any) {
         let renderer = new Renderer(component);
         Array.from(message.elements)
             .map(e => Object.assign(e, {position: message.position}))

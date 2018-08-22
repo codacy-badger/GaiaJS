@@ -22,7 +22,7 @@ export class Block extends MarkupComponent{
         block.classList.add("block");
         block.classList.add(position);
         block.appendChild(TextTime.render());
-        this.renderElements(block, this.message, sendMessage);
+        Block.renderElements(block, this.message, sendMessage);
         container.appendChild(new TextIcon(position).render());
         container.appendChild(block);
     }

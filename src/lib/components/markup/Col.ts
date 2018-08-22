@@ -15,7 +15,7 @@ export class Col extends MarkupComponent{
     render(container:any, sendMessage:any) {
         let col = document.createElement("td");
         col.classList.add("col");
-        this.renderElements(col, this.message, sendMessage);
+        Col.renderElements(col, this.message, sendMessage);
         container.appendChild(col);
     }
 }

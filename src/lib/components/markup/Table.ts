@@ -18,11 +18,11 @@ export class Table extends MarkupComponent {
             let position = this.message.position || "left";
             table.classList.add("table", position);
             table.appendChild(TextTime.render());
-            this.renderElements(table, this.message, sendMessage);
+            Table.renderElements(table, this.message, sendMessage);
             container.appendChild(new TextIcon(position).render());
         } else {
             table.classList.add("table-nested");
-            this.renderElements(table, this.message, sendMessage);
+            Table.renderElements(table, this.message, sendMessage);
         }
         container.appendChild(table);
     }

@@ -15,7 +15,7 @@ export class Row extends MarkupComponent{
     render(container:any, sendMessage:any) {
         let row = document.createElement("tr");
         row.classList.add("row");
-        this.renderElements(row, this.message, sendMessage);
+        Row.renderElements(row, this.message, sendMessage);
         container.appendChild(row);
     }
 

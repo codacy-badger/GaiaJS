@@ -17,7 +17,7 @@ export class Items extends MarkupComponent{
     render(container: any, sendMessage:any) {
         let items = document.createElement("ul");
         items.classList.add("items");
-        this.renderElements(items, this.elements, sendMessage);
+        Items.renderElements(items, this.elements, sendMessage);
         container.appendChild(items);
     }
 
