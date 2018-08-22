@@ -1,15 +1,15 @@
-import './assets/text_icon.css'
+import "./assets/text_icon.css";
 
 export class TextIcon {
 
-    position: string;
+    public position: string;
 
     constructor(position: string) {
-        this.position = position
+        this.position = position;
     }
 
-    render() {
-        let textIcon = document.createElement("div");
+    public render() {
+        const textIcon = document.createElement("div");
         textIcon.classList.add("text-icon", this.position);
         return textIcon;
     }

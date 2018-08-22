@@ -1,19 +1,19 @@
-import {MarkupComponent} from './MarkupComponent'
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/col.css'
+import "./assets/col.css";
 
-export class Col extends MarkupComponent{
+export class Col extends MarkupComponent {
 
-    name:string = "COL";
-    message:any;
+    public name: string = "COL";
+    public message: any;
 
-    constructor(message:any) {
+    constructor(message: any) {
         super(name);
         this.message = message;
     }
 
-    render(container:any, sendMessage:any) {
-        let col = document.createElement("td");
+    public render(container: any, sendMessage: any) {
+        const col = document.createElement("td");
         col.classList.add("col");
         Col.renderElements(col, this.message, sendMessage);
         container.appendChild(col);

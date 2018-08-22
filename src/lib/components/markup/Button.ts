@@ -1,19 +1,23 @@
-import {InlineText} from '../InlineText'
-import {MarkupComponent} from './MarkupComponent'
+import {InlineText} from "../InlineText";
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/button.css'
-import './assets/left.css'
-import './assets/right.css'
+import "./assets/button.css";
+import "./assets/left.css";
+import "./assets/right.css";
 
-export class Button extends MarkupComponent{
+export class Button extends MarkupComponent {
 
-    name:string = "BUTTON";
-    text:string;
-    buttonName:string;
-    value:string;
-    position:string;
+    public static isNested(container: any) {
+        return container.hasClass("block") || container.prop("tagName") === "TD";
+    }
 
-    constructor(message:any) {
+    public name: string = "BUTTON";
+    public text: string;
+    public buttonName: string;
+    public value: string;
+    public position: string;
+
+    constructor(message: any) {
         super(name);
         this.text = message.text;
         this.buttonName = message.name;
@@ -21,9 +25,9 @@ export class Button extends MarkupComponent{
         this.position = message.position;
     }
 
-    render(container:any, sendMessage:any) {
-        let position = this.position || "left";
-        let button = document.createElement("button");
+    public render(container: any, sendMessage: any) {
+        const position = this.position || "left";
+        const button = document.createElement("button");
         button.setAttribute("name", this.buttonName);
 
         if (!Button.isNested(container)) {
@@ -34,8 +38,8 @@ export class Button extends MarkupComponent{
 
         button.appendChild(new InlineText(this.text).render());
         container.appendChild(button);
-        let t = this.text, n = this.buttonName, v = this.value;
-        button.addEventListener('click', function() {
+        const t = this.text, n = this.buttonName, v = this.value;
+        button.addEventListener("click", function() {
             sendMessage({type: "button", text: t, name: n, value: v});
         });
     }

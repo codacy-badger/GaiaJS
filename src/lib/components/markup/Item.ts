@@ -1,20 +1,20 @@
-import {InlineText} from '../InlineText'
-import {MarkupComponent} from './MarkupComponent'
+import {InlineText} from "../InlineText";
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/item.css'
+import "./assets/item.css";
 
-export class Item extends MarkupComponent{
+export class Item extends MarkupComponent {
 
-    name:string = "ITEM";
-    text: string;
+    public name: string = "ITEM";
+    public text: string;
 
-    constructor(message:any) {
+    constructor(message: any) {
         super(name);
         this.text = message.text;
     }
 
-    render(container:any) {
-        let item = document.createElement("li");
+    public render(container: any) {
+        const item = document.createElement("li");
         item.classList.add("item");
         item.appendChild(new InlineText(this.text).render());
         container.appendChild(item);

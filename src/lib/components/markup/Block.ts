@@ -1,16 +1,16 @@
-import {TextTime} from '../TextTime';
-import {TextIcon} from '../TextIcon';
-import {MarkupComponent} from './MarkupComponent'
+import {TextIcon} from "../TextIcon";
+import {TextTime} from "../TextTime";
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/block.css'
-import './assets/left.css'
-import './assets/right.css'
+import "./assets/block.css";
+import "./assets/left.css";
+import "./assets/right.css";
 
-export class Block extends MarkupComponent{
+export class Block extends MarkupComponent {
 
-    name: string = "BLOCK";
-    message: any;
-    position: string;
+    public name: string = "BLOCK";
+    public message: any;
+    public position: string;
 
     constructor(message: any) {
         super(name);
@@ -18,9 +18,9 @@ export class Block extends MarkupComponent{
         this.position = message.position;
     }
 
-    render(container: any, sendMessage: any) {
-        let position = this.position || "left";
-        let block = document.createElement("div");
+    public render(container: any, sendMessage: any) {
+        const position = this.position || "left";
+        const block = document.createElement("div");
         block.classList.add("block");
         block.classList.add(position);
         block.appendChild(TextTime.render());

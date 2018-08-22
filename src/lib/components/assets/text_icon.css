@@ -3,7 +3,7 @@
     width: 42px;
     height: 40px;
     background: black;
-    background: url(icon.png) center center no-repeat;
+    /*background: url(icon.png) center center no-repeat;*/
     background-size: cover;
     animation: slide-up 0.4s ease;
 }

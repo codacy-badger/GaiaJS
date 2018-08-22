@@ -1,27 +1,37 @@
-import {InlineText} from '../InlineText'
-import {MarkupComponent} from './MarkupComponent'
+import {InlineText} from "../InlineText";
+import {MarkupComponent} from "./MarkupComponent";
 
-import './assets/submit.css'
-import './assets/left.css'
-import './assets/right.css'
+import "./assets/left.css";
+import "./assets/right.css";
+import "./assets/submit.css";
 
-export class Submit extends MarkupComponent{
+export class Submit extends MarkupComponent {
 
-    name:string = "SUBMIT";
-    text:string;
-    position:string;
-    timestamp: any;
+    public static closestByClass(el: any, clazz: string) {
+        while (el.className != clazz) {
+            el = el.parentNode;
+            if (!el) {
+                return null;
+            }
+        }
+        return el;
+    }
 
-    constructor(message:any) {
+    public name: string = "SUBMIT";
+    public text: string;
+    public position: string;
+    public timestamp: any;
+
+    constructor(message: any) {
         super(name);
         this.text = message.text;
         this.position = message.position;
         this.timestamp = message.timestamp;
     }
 
-    render(container:any, sendMessage:any) {
-        let position = this.position || "left";
-        let submit = document.createElement("button");
+    public render(container: any, sendMessage: any) {
+        const position = this.position || "left";
+        const submit = document.createElement("button");
 
         if (!Submit.isNested(container)) {
             submit.classList.add("submit", position);
@@ -31,17 +41,17 @@ export class Submit extends MarkupComponent{
 
         submit.appendChild(new InlineText(this.text).render());
         container.appendChild(submit);
-        let text = this.text;
-        let timestamp = this.timestamp;
+        const text = this.text;
+        const timestamp = this.timestamp;
 
-        submit.addEventListener('click', ev => function() {
-            let attributes = {};
+        submit.addEventListener("click", (ev) => function() {
+            const attributes = {};
 
-            let content = Submit.closestByClass(ev, "message-content");
-            content.querySelectorAll("input[type='checkbox']").forEach((i:any, checkbox:any) => {
+            const content = Submit.closestByClass(ev, "message-content");
+            content.querySelectorAll("input[type='checkbox']").forEach((i: any, checkbox: any) => {
                 if (checkbox.checked === true) {
-                    let name = checkbox.getAttribute("name");
-                    let value = checkbox.getAttribute("value");
+                    const name = checkbox.getAttribute("name");
+                    const value = checkbox.getAttribute("value");
 
                     if (attributes[name] !== undefined) {
                         attributes[name].push(value);
@@ -50,18 +60,8 @@ export class Submit extends MarkupComponent{
                     }
                 }
             });
-            sendMessage({type: "submit", position: "right", timestamp: timestamp, text: text, attributes:attributes});
+            sendMessage({type: "submit", position: "right", timestamp, text, attributes});
         });
-    }
-
-    static closestByClass (el:any, clazz:string) {
-        while (el.className != clazz) {
-            el = el.parentNode;
-            if (!el) {
-                return null;
-            }
-        }
-        return el;
     }
 
 }

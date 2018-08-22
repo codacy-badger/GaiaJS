@@ -4,6 +4,8 @@
   "description": "JavaScript connector to the GAIA ecosystem.",
   "main": "dist/index.js",
   "dependencies": {
+    "fs": "0.0.1-security",
+    "sockjs": "^0.3.19",
     "stompjs": "^2.3.3"
   },
   "devDependencies": {
@@ -20,9 +22,10 @@
     "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-promise": "^4.0.0",
     "html-webpack-plugin": "^3.2.0",
-    "mini-css-extract-plugin": "^0.4.1",
+    "mini-css-extract-plugin": "^0.4.2",
     "node-sass": "^4.9.3",
     "node-sass-utils": "^1.1.2",
+    "optimize-css-assets-webpack-plugin": "^5.0.0",
     "postcss-loader": "^3.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.22.1",

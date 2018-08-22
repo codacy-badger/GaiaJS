@@ -1,23 +1,23 @@
-import {TextTime} from '../TextTime';
-import {TextIcon} from '../TextIcon';
-import {MarkupComponent} from './MarkupComponent';
+import {TextIcon} from "../TextIcon";
+import {TextTime} from "../TextTime";
+import {MarkupComponent} from "./MarkupComponent";
 
 export class Table extends MarkupComponent {
 
-    name:string = "TABLE";
-    message:any;
-    position: string;
+    public name: string = "TABLE";
+    public message: any;
+    public position: string;
 
-    constructor(message:any) {
+    constructor(message: any) {
         super(name);
         this.message = message;
         this.position = message.position;
     }
 
-    render(container:any, sendMessage:any) {
-        let table = document.createElement("table");
+    public render(container: any, sendMessage: any) {
+        const table = document.createElement("table");
         if (!Table.isNested(container)) {
-            let position = this.position || "left";
+            const position = this.position || "left";
             table.classList.add("table", position);
             table.appendChild(TextTime.render());
             Table.renderElements(table, this.message, sendMessage);

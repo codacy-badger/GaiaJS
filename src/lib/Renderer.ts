@@ -10,16 +10,16 @@ import {Items} from "./components/markup/Items";
 import {Link} from "./components/markup/Link";
 import {MarkupComponent} from "./components/markup/MarkupComponent";
 import {Row} from "./components/markup/Row";
+import {Submit} from "./components/markup/Submit";
 import {Table} from "./components/markup/Table";
 import {Text} from "./components/markup/Text";
-import {Submit} from "./components/markup/Submit";
 
 export class Renderer {
 
     public components: MarkupComponent[] = [
         Block, Bold, Button, Headline,
         Image, Item, Items, Link, Text,
-        Table, Row, Col, Checkbox, Submit
+        Table, Row, Col, Checkbox, Submit,
     ];
     public container: any;
 
