@@ -10,7 +10,7 @@ cache:
   directories:
     - node_modules
 after_success:
-  - .travis/push.sh
+  - sh .travis/push.sh
 deploy:
  provider: pages
  skip_cleanup: true
