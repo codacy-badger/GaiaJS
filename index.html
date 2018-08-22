@@ -1,1 +1,48 @@
-<h1>Test!</h1>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>GaiaJS Demo</title>
+    <script src="dist/gaia.js"></script>
+</head>
+<body>
+
+<div class="gaia-chat">
+    <div class="header" id="chat-header"></div>
+    <div class="messages scrollbar" id="chat-messages"></div>
+    <div class="control" id="chat-control">
+        <textarea class="messageInput" id="chat-messageInput" onkeyup="(ev) => keyUp(ev)"></textarea>
+        <button class="sendButton" id="chat-sendButton">Send</button>
+    </div>
+    <div class="footer" id="chat-footer"></div>
+</div>
+
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        let channel = new GaiaChannel("#chat-messages");
+        let promise = channel.connect("https://beta-api.leftshift.one/channel/ws", "18104aed-5ceb-4ff5-b514-c69ae757d5f9");
+        promise.then(() => {
+            // the channel is ready to use
+        });
+
+        document.getElementById("chat-messageInput").addEventListener("keyup", ((ev) => {
+            alert("keyup");
+            if (ev.keyCode === 13) {
+                send(document.getElementById("chat-messageInput").value);
+            }
+        }));
+
+        document.getElementById("chat-sendButton").addEventListener("click", (() => {
+            send(document.getElementById("chat-messageInput").value);
+        }));
+
+        function send(value) {
+            if (value !== "") {
+                channel.sendMessage({type: "text", text: value});
+                document.getElementById("chat-messageInput").value = "";
+            }
+        }
+    });
+</script>
+</html>
