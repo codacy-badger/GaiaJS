@@ -4,10 +4,11 @@
   "description": "JavaScript connector to the GAIA ecosystem.",
   "main": "dist/index.js",
   "dependencies": {
-    "sockjs": "^0.3.19",
+    "sockjs-client": "^1.1.5",
     "webstomp-client": "^1.2.4"
   },
   "devDependencies": {
+    "@types/sockjs-client": "^1.1.0",
     "autoprefixer": "^9.1.2",
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.5",
